@@ -1,0 +1,56 @@
+// TODO: change all rgb to hsl and create 5 more shades
+$primary900: hsl(242, 56, 23);
+$primary800: hsl(242, 56, 27);
+$primary500: hsl(242, 71%, 57%);
+$primary300: hsl(242.4, 70.4%, 72.2%);
+$primary100: hsl(244, 71.4%, 95.9%);
+// GREYS
+$white: hsl(0, 0, 100);
+$grey-dark: hsl(0, 0, 20);
+$grey-medium: hsl(0, 0, 35);
+$grey-light: hsl(0, 0, 60);
+$grey-extra-light: hsl(240, 14, 96);
+
+// TODO: change all hex to hsl
+$grey100: hsl(210, 17, 98);
+$grey200: hsl(207, 22, 90);
+$grey300: hsl(210, 24, 87);
+$grey400: hsl(208, 17, 83);
+$grey500: hsl(211, 24, 75);
+$grey600: hsl(214, 16, 64);
+$grey700: hsl(216, 11, 49);
+$grey800: hsl(217, 17, 31);
+$grey900: hsl(215, 23, 16);
+
+// PADDINGS & MARGINS
+$pm-sm: 15px;
+$pm-md: 30px;
+$pm-lg: 60px;
+
+// SIZES
+$app-w: 800px;
+
+// FONT SIZES
+$heading-primary: 35px;
+$heading-secondary: 28px;
+$body-lg: 24px;
+$body-md: 20px;
+$body-sm: 16px;
+
+// FONT WEIGHTS
+$bold: 800;
+
+// FONT FAMILY
+$font-src: "https://fonts.googleapis.com/css?family=Libre+Baskerville:700|Source+Sans+Pro:300,400,400i,700&display=swap";
+$font-heading: "Libre Baskerville";
+$font-body: "Source Sans Pro";
+
+// SHADOWS
+$direct-light: 0 3px 6px rgba(0, 0, 0, 0.25);
+$ambient-light: 0px 10px 20px 0px rgba(232, 232, 232, 1);
+$inset: inset 2px 2px 6px 0px rgba(232, 232, 232, 1);
+
+// BREAKPOINTS
+$mobile: 900px;
+$small-laptop: 1200px;
+$bdr-radius: 5px;
