@@ -1,0 +1,30 @@
+[
+  {
+    "questions": [
+      {
+        "tag": "revenue",
+        "label": "How much do you wanna make in a year",
+        "placeholder": "Desired Yearly revenue"
+      },
+      {
+        "tag": "saleWorth",
+        "label": "How much are you gonna profit from one sale?",
+        "placeholder": "Single sale net worth"
+      }
+    ]
+  },
+  {
+    "questions": [
+      {
+        "tag": "sessionConversion",
+        "label": "What's your strategy sessions' conversion rate?",
+        "placeholder": "% pf succesfull strategy sessions"
+      },
+      {
+        "tag": "outreachConversion",
+        "label": "What's your outreach conversion rate?",
+        "placeholder": "% of outreaches booking a strategy session."
+      }
+    ]
+  }
+]

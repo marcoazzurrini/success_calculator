@@ -38,15 +38,15 @@ label {
   @include flexy(center, center);
 
   .calculator {
-    width: 90%;
+    width: 95%;
     max-width: $app-w;
     background-color: $white;
     box-shadow: $ambient-light;
     border-radius: $bdr-radius;
     position: relative;
+    padding: $pm-lg;
 
     .progress {
-      position: absolute;
       width: 100%;
       height: 14px;
       background-color: $primary300;
@@ -64,7 +64,7 @@ label {
 
     &__header {
       width: 100%;
-      padding: $pm-lg $pm-md;
+      padding: $pm-lg 0;
 
       &--title {
         @include fluid-type(
@@ -80,8 +80,6 @@ label {
     }
 
     &__form {
-      padding: 0 30px;
-
       &--label {
         display: block;
         margin-bottom: $pm-sm;
@@ -93,6 +91,7 @@ label {
         margin: 0.75rem 0;
         width: 100%;
         border: none;
+        max-width: $input-w;
         box-shadow: $ambient-light;
         background-color: $grey100;
         color: $grey200;
@@ -102,20 +101,15 @@ label {
         margin-bottom: $pm-lg;
       }
 
-      &--reset {
-        color: $primary500;
-        font-size: 16px;
-        width: 100%;
-        text-align: right;
-        font-weight: $bold;
-        margin: 1rem 0 1.25rem 0;
+      &--previous {
+        max-width: 25px;
+        margin-left: auto;
         cursor: pointer;
       }
     }
 
     &__footer {
       @include flexy(center, center);
-      padding: 0 $pm-md $pm-md 0;
       border-bottom-left-radius: $bdr-radius;
       border-bottom-right-radius: $bdr-radius;
 
@@ -133,5 +127,15 @@ label {
         @include flexy(center, center);
       }
     }
+
+    @media only screen and (max-width: $mobile) {
+      padding: $pm-sm;
+      box-shadow: none;
+    }
+  }
+
+  @media only screen and (max-width: $mobile) {
+    align-items: flex-start;
+    padding-top: 10vh;
   }
 }
