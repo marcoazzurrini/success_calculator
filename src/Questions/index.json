@@ -18,12 +18,12 @@
       {
         "tag": "sessionConversion",
         "label": "What's your strategy sessions' conversion rate?",
-        "placeholder": "% pf succesfull strategy sessions"
+        "placeholder": "20% is the industry standard"
       },
       {
         "tag": "outreachConversion",
         "label": "What's your outreach conversion rate?",
-        "placeholder": "% of outreaches booking a strategy session."
+        "placeholder": "2% is the industry standard for email outreaches"
       }
     ]
   }

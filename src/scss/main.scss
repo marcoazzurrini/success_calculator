@@ -41,7 +41,7 @@ label {
     width: 95%;
     max-width: $app-w;
     background-color: $white;
-    box-shadow: $ambient-light;
+    // box-shadow: $ambient-light;
     border-radius: $bdr-radius;
     position: relative;
     padding: $pm-lg;
@@ -50,8 +50,10 @@ label {
       width: 180px;
       position: absolute;
       top: 35%;
-      right: 10%;
-
+      right: 5%;
+      &.mobile {
+        display: none;
+      }
       @media only screen and (max-width: $mobile) {
         display: none;
       }
@@ -67,9 +69,9 @@ label {
 
       &__inner {
         height: 100%;
-        width: 25%;
         background: $primary500;
         border-top-left-radius: $bdr-radius;
+        transition: all 0.3s ease-in-out;
       }
     }
 
@@ -105,7 +107,7 @@ label {
         max-width: $input-w;
         box-shadow: $ambient-light;
         background-color: $grey100;
-        color: $grey200;
+        color: $grey800;
         border-radius: $bdr-radius;
         padding: $pm-sm;
         outline: none;
@@ -148,5 +150,46 @@ label {
   @media only screen and (max-width: $mobile) {
     align-items: flex-start;
     padding-top: 10vh;
+  }
+}
+
+.output {
+  &__section {
+    @include flexy(space-between, center);
+    margin-bottom: $pm-lg;
+
+    &:nth-child(even) {
+      @include flexy(space-between, center, row-reverse);
+    }
+
+    @media only screen and (max-width: $mobile) {
+      @include flexy(center, center, column !important);
+    }
+  }
+  &__paragraph {
+    font-size: $body-lg;
+    max-width: $input-w;
+    padding-left: $pm-sm;
+    line-height: 1.5;
+    color: $grey800;
+
+    &.border {
+      border-left: 5px solid $primary500;
+    }
+
+    &--value {
+      font-weight: $bold;
+      color: $primary900;
+    }
+
+    @media only screen and (max-width: $mobile) {
+      margin-bottom: $pm-lg;
+      padding: 0;
+      border: none !important;
+    }
+  }
+
+  &__img {
+    max-width: 150px;
   }
 }

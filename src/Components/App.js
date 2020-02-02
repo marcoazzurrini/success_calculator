@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import MoneySVG from "../img/money.svg";
 import Header from "./Header";
 import Form from "./Form";
 import ProgressBar from "./ProgressBar";
 
 export default class App extends Component {
+  state = { count: 0 };
+  updateProgress = count => {
+    this.setState({ count: count });
+  };
   render() {
     return (
       <div className="container">
         <div className="calculator">
-          <img className="calculator__img" src={MoneySVG} alt="money" />
-          <ProgressBar />
+          <ProgressBar count={this.state.count} />
           <Header />
-          <Form />
+          <Form updateProgress={this.updateProgress} />
         </div>
       </div>
     );

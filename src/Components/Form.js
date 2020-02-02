@@ -1,52 +1,41 @@
 import React, { Component } from "react";
 import Questions from "../Questions";
 import GoBackSVG from "../img/left-chevron.svg";
+import MoneySVG from "../img/money.svg";
+import Output from "./Output";
 
 export default class Form extends Component {
   state = {
     revenue: "",
     saleWorth: "",
-    sessionConversion: "",
-    outreachConversion: "",
-    count: 0
+    sessionConversion: 20,
+    outreachConversion: 2,
+    count: 0,
+    showResults: false
   };
 
   handleChange = e => {
-    switch (e.target.id) {
-      case "revenue":
-        this.setState({ revenue: e.target.value });
-        break;
-      case "saleWorth":
-        this.setState({ saleWorth: e.target.value });
-        break;
-      case "sessionConversion":
-        this.setState({
-          sessionConversion: e.target.value
-        });
-        break;
-      case "outreachConversion":
-        this.setState({
-          outreachConversion: e.target.value
-        });
-        break;
-      default:
-        console.log("something went wrong");
-    }
+    this.setState({ [e.target.id]: e.target.value });
   };
 
   updateCount = e => {
-    switch (e.dataset.action) {
+    e.preventDefault();
+    let newCount = this.state.count;
+    switch (e.target.dataset.action) {
       case "next":
         if (this.state.count < Questions.length - 1) {
-          let newCount = this.state.count + 1;
-          this.setState({ count: newCount });
+          this.setState({ count: newCount + 1 });
+          this.props.updateProgress(newCount + 1);
+        } else if (this.state.count === Questions.length - 1) {
+          this.setState({ showResults: true, count: newCount + 1 });
+          this.props.updateProgress(newCount + 1);
         }
         break;
 
       case "previous":
         if (this.state.count > 0) {
-          let newCount = this.state.count - 1;
-          this.setState({ count: newCount });
+          this.setState({ count: newCount - 1, showResults: false });
+          this.props.updateProgress(newCount - 1);
         }
         break;
 
@@ -57,25 +46,46 @@ export default class Form extends Component {
 
   render() {
     return (
-      <form className="calculator__form">
-        {Questions[this.state.count].questions.map((question, index) => {
-          return (
-            <div key={index}>
-              <label className="calculator__form--label">
-                {question.label}
-              </label>
-              <input
-                className="calculator__form--input"
-                required
-                placeholder={question.placeholder}
-                type="number"
-                id={question.tag}
-                value={this.state.revenue}
-                onChange={this.handleChange}
-              />
-            </div>
-          );
-        })}
+      <form
+        data-action="next"
+        onSubmit={this.updateCount}
+        className="calculator__form"
+      >
+        <img
+          className={`calculator__img ${
+            this.state.showResults === true ? "mobile" : ""
+          }`}
+          src={MoneySVG}
+          alt="money"
+        />
+
+        {this.state.showResults === false ? (
+          Questions[this.state.count].questions.map((question, index) => {
+            return (
+              <div key={index}>
+                <label className="calculator__form--label">
+                  {question.label}
+                </label>
+                <input
+                  className="calculator__form--input"
+                  required
+                  placeholder={question.placeholder}
+                  type="number"
+                  id={question.tag}
+                  value={this.state[question.tag]}
+                  onChange={this.handleChange}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <Output
+            revenue={this.state.revenue}
+            saleWorth={this.state.saleWorth}
+            sessionConversion={this.state.sessionConversion}
+            outreachConversion={this.state.outreachConversion}
+          />
+        )}
         <div className="calculator__footer">
           <img
             className="calculator__form--previous"
@@ -86,8 +96,8 @@ export default class Form extends Component {
           />
 
           <button
-            onClick={this.updateCount}
             data-action="next"
+            type="submit"
             className="calculator__footer--btn"
           >
             Next
